@@ -227,16 +227,5 @@ Maps | Google Maps API |
 9. Razorpay Payment Gateway Documentation  
 10. Twilio Messaging API Documentation  
 
----
-
-# Demo Video
-
-2-minute explanation video:
-
-[Add your video link here]
 
 ---
-
-# Repository
-
-This repository will be used across all phases of the project.
