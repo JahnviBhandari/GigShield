@@ -1,289 +1,244 @@
-# 🚀 GigShield
-### AI-Powered Parametric Insurance for Gig Workers
+# 🛡️ GigShield — Smart Insurance for Gig Workers
 
-GigShield is an AI-powered parametric insurance platform designed to protect gig economy delivery workers from income loss caused by real-world disruptions such as extreme weather, pollution, floods, or city shutdowns.
-
-Unlike traditional insurance, GigShield automatically detects disruptions and triggers **instant payouts** — no claim forms, no delays.
+GigShield is an AI-powered parametric insurance platform built for delivery partners and gig workers in India. It offers instant claim payouts, real-time weather alerts, live location detection, OTP-based authentication, and an admin dashboard — all in one app.
 
 ---
 
-# 🧩 Problem Statement
+## 🌐 Live Demo
 
-Millions of delivery workers on platforms like:
-
-- Zomato  
-- Swiggy  
-- Zepto  
-- Dunzo  
-- Amazon Flex  
-
-depend on daily income.
-
-When disruptions like heavy rain, extreme heat, pollution, or traffic shutdowns occur:
-
-❌ Deliveries stop  
-❌ Earnings drop to zero  
-❌ No financial safety net exists  
+| Service | URL |
+|---|---|
+| **Frontend** | [gleaming-mermaid-6c138f.netlify.app](https://gleaming-mermaid-6c138f.netlify.app) |
+| **Backend API** | Deployed on Render |
 
 ---
 
-# 💡 Our Solution
+## 📸 Features
 
-GigShield provides **parametric income protection**.
-
-### Core Idea:
-Instead of filing claims → system automatically detects disruption → payout is triggered.
-
----
-
-# 👤 Persona-Based Scenario
-
-### Ravi – Delivery Partner
-
-- Platform: Swiggy  
-- Location: Bengaluru  
-- Daily income: ₹600  
-
-### Scenario:
-Heavy rainfall exceeds **15 mm/hr**
-
-### System Response:
-- Disruption detected  
-- Claim auto-generated  
-- Fraud check passed  
-- ₹300 payout sent instantly  
-
-📩 Notification:
-> "Rain disruption detected. ₹300 credited to your account."
+- 📱 **OTP Login** — Phone number based authentication with 6-digit OTP
+- 📍 **Live Location Detection** — Auto-detects city, zone, and pincode via GPS
+- 🌦️ **Real-time Weather** — Live weather data with rain alerts using OpenWeatherMap
+- 🛵 **Gig Worker Profiles** — Register with platform (Swiggy, Zomato, Ola, etc.), vehicle type, and shift details
+- 💰 **Parametric Claims** — Instant claim filing based on weather/rain triggers
+- 📊 **Dashboard** — Personal insurance dashboard with claim history and risk score
+- 🔐 **Admin Panel** — View all users, claims, and analytics
+- 🔥 **Firebase Firestore** — Real-time cloud database for users and claims
 
 ---
 
-# ⚙️ Workflow
+## 🏗️ Tech Stack
 
-1. Worker registers  
-2. AI calculates risk score & premium  
-3. Worker activates weekly plan  
-4. External APIs detect disruption  
-5. Claim automatically generated  
-6. Fraud detection validates claim  
-7. Instant payout via UPI  
+### Frontend
+| Tech | Usage |
+|---|---|
+| React 19 | UI framework |
+| TypeScript | Type safety |
+| Vite | Build tool |
+| Tailwind CSS | Styling |
+| Framer Motion | Animations |
+| Recharts | Charts & analytics |
+| React Hot Toast | Notifications |
+| Axios | API calls |
 
----
-
-# 💰 Weekly Premium Model
-
-| Tier | Premium | Coverage |
-|-----|--------|---------|
-| Bronze | ₹12–₹20 | Basic |
-| Silver | ₹20–₹35 | Medium |
-| Gold | ₹35–₹49 | High |
-
-### Risk Pool:
-
-Example:
-1000 workers × ₹25 = ₹25,000 pool
-
-
-Payouts are made from this shared pool.
+### Backend
+| Tech | Usage |
+|---|---|
+| Node.js | Runtime |
+| Express.js | API server |
+| Firebase Firestore | Database |
+| OpenWeatherMap API | Live weather |
+| Nominatim (OpenStreetMap) | Reverse geocoding |
+| Twilio (optional) | Real SMS OTP |
+| express-rate-limit | OTP abuse prevention |
 
 ---
 
-# 🌧️ Parametric Triggers
+## 📁 Project Structure
 
-| Event | Condition |
-|------|----------|
-Heavy Rain | > 15 mm/hr |
-Extreme Heat | > 43°C |
-Pollution | AQI > 300 |
-Flood | Govt alert |
-Cyclone | Wind > 60 km/h |
-Shutdown | > 4 hrs closure |
-
----
-
-# 🤖 AI / ML Integration
-
-## 1. Risk Profiler
-- Predicts worker risk
-- Calculates premium
-
-## 2. Fraud Detection
-- Isolation Forest model
-- Detects anomalies in claims
-
-## 3. Disruption Classifier
-- Validates real-world events
-
----
-
-# 📱 Platform Choice
-
-We use a **Progressive Web App (PWA)**
-
-### Why?
-- Works on low-end Android
-- No download needed
-- Fast & lightweight
+```
+gigshield/
+├── backend/
+│   ├── server.js          ← Express API server (all routes)
+│   ├── package.json
+│   ├── .env               ← Environment variables
+│   └── .env.example       ← Template for env vars
+│
+└── frontend/
+    ├── src/
+    │   ├── App.tsx          ← Main app component
+    │   ├── components/
+    │   │   └── ui.tsx       ← Reusable UI components
+    │   ├── services/
+    │   │   └── api.ts       ← All backend API calls
+    │   ├── lib/
+    │   │   └── firebase.ts  ← Firebase config
+    │   └── types.ts         ← TypeScript types
+    ├── .env                 ← VITE_API_URL config
+    ├── index.html
+    └── package.json
+```
 
 ---
 
-# 🛠️ Tech Stack
+## ⚙️ Local Setup
 
-| Layer | Tech |
-|------|-----|
-Frontend | Next.js + Tailwind |
-Backend | Node.js + Express |
-AI | Python + FastAPI |
-DB | PostgreSQL |
-Cache | Redis |
-Streaming | Kafka |
-Cloud | AWS |
-Payments | Razorpay |
-Notifications | Twilio |
+### Prerequisites
+- Node.js v18+
+- npm
 
----
+### 1. Clone the repo
+```bash
+git clone https://github.com/ashutosh691/backend.git
+cd backend
+```
 
-# 🚨 Adversarial Defense & Anti-Spoofing Strategy
+### 2. Setup Backend
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Fill in your credentials in .env
+node server.js
+```
+Server runs at `http://localhost:3001`
 
-## Problem:
-Fraudsters can spoof GPS and fake disruptions.
-
-## Solution:
-We use **multi-layer verification beyond GPS**.
-
----
-
-## 1. Differentiation (Real vs Fake Worker)
-
-We analyze:
-
-- GPS location  
-- Motion data (movement patterns)  
-- Delivery activity  
-- IP / network data  
-- Historical behavior  
-- Peer validation  
-
-### Trust Score:
-trust_score = f(movement, activity, location consistency)
-
+### 3. Setup Frontend
+```bash
+cd frontend
+npm install
+# Create .env file
+echo "VITE_API_URL=http://localhost:3001" > .env
+npm run dev
+```
+App runs at `http://localhost:5173`
 
 ---
 
-## 2. Data Signals Used
+## 🔐 Environment Variables
 
-### Device Signals:
-- Accelerometer
-- Movement speed
+### Backend `.env`
+```env
+PORT=3001
+NODE_ENV=development
 
-### Network Signals:
-- IP clustering
-- VPN detection
+# Firebase (already configured in server.js)
+# No extra env vars needed for Firebase
 
-### Behavioral Signals:
-- Orders completed
-- Activity drop
+# OpenWeatherMap
+OPENWEATHER_API_KEY=your_key_here
 
-### Geo Intelligence:
-- Zone-level worker activity
-- Claim clustering
+# Admin
+ADMIN_PASSWORD=admin123
 
----
+# JWT
+JWT_SECRET=your_secret_here
 
-## 3. Fraud Detection Model
+# Twilio (optional - OTP works without it in dev mode)
+TWILIO_ACCOUNT_SID=your_sid
+TWILIO_AUTH_TOKEN=your_token
+TWILIO_PHONE_NUMBER=+1XXXXXXXXXX
+```
 
-Model:
-- Isolation Forest + anomaly detection
-
-Detects:
-- Claim spikes
-- Syndicate fraud
-- Coordinated attacks
-
----
-
-## 4. Anti-Spoofing Techniques
-
-- Multi-source location validation  
-- Motion verification  
-- Delivery platform cross-check  
-- Time-series behavior analysis  
-- Claim rate limiting  
+### Frontend `.env`
+```env
+VITE_API_URL=http://localhost:3001
+```
 
 ---
 
-## 5. UX Balance (Fairness)
+## 🚀 Deployment
 
-| Risk Level | Action |
-|-----------|-------|
-Low | Auto-approve |
-Medium | Review |
-High | Hold |
+### Backend → Render
+1. Push backend code to GitHub
+2. Go to [render.com](https://render.com) → New Web Service
+3. Connect your repo
+4. Set **Root Directory** → `backend`
+5. **Build Command** → `npm install`
+6. **Start Command** → `node server.js`
+7. Add all environment variables
+8. Deploy ✅
 
-Workers are never unfairly rejected.
-
----
-
-## 6. Fail-Safe
-
-If fraud detected:
-- Pause payouts
-- Alert admin
-- Increase validation
-
----
-
-# 📈 Development Plan
-
-## Week 1
-- Architecture design  
-- Repo setup  
-- DB schema  
-- UI design  
-
-## Week 2
-- Worker onboarding  
-- Event simulation  
-- Dashboard UI  
-- AI prototype  
+### Frontend → Netlify
+1. Update `frontend/.env` with your Render URL:
+   ```
+   VITE_API_URL=https://your-backend.onrender.com
+   ```
+2. Build:
+   ```bash
+   cd frontend && npm run build
+   ```
+3. Drag & drop `dist/` folder to [netlify.com](https://netlify.com) ✅
 
 ---
 
-# 🔮 Future Enhancements
+## 📡 API Endpoints
 
-- GigScore (worker reputation)
-- Retroactive claims
-- Weather risk forecast
-- Heatmaps
-- Platform APIs
-
----
-
-# 📚 References
-
-1. World Bank – Gig Economy Report  
-2. ILO – Digital Labour Platforms  
-3. Swiss Re – Parametric Insurance  
-4. OpenWeatherMap API  
-5. OpenAQ / WAQI  
-6. Apache Kafka Docs  
-7. Scikit-learn Docs  
-8. Google Maps API  
-9. Razorpay Docs  
-10. Twilio Docs  
-
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/health` | Health check |
+| POST | `/api/otp/send` | Send OTP |
+| POST | `/api/otp/verify` | Verify OTP |
+| GET | `/api/location/reverse?lat=&lon=` | Reverse geocode coordinates |
+| GET | `/api/weather?lat=&lon=` | Get live weather |
+| POST | `/api/admin/login` | Admin login |
+| POST | `/api/users` | Register new user |
+| GET | `/api/users/phone/:phone` | Get user by phone |
+| GET | `/api/users` | Get all users |
+| PUT | `/api/users/:id` | Update user |
+| POST | `/api/claims` | File a claim |
+| GET | `/api/claims/user/:userId` | Get user claims |
+| GET | `/api/claims` | Get all claims (admin) |
 
 ---
 
-# 📌 Conclusion
+## 🧪 Test the API
 
-GigShield ensures:
+```bash
+# Health check
+curl https://your-backend.onrender.com/health
 
-✅ Instant payouts  
-✅ AI-driven risk pricing  
-✅ Fraud-resistant system  
-✅ Financial safety for gig workers  
+# Send OTP (dev mode returns OTP in response)
+curl -X POST https://your-backend.onrender.com/api/otp/send \
+  -H "Content-Type: application/json" \
+  -d '{"phone": "9999999999"}'
 
-### Final Vision:
+# Get weather
+curl "https://your-backend.onrender.com/api/weather?lat=28.6&lon=77.2"
+```
 
-**When deliveries stop, income shouldn’t.**
+---
+
+## 👥 User Roles
+
+| Role | Access |
+|---|---|
+| **Gig Worker** | Register, login, view dashboard, file claims, check weather |
+| **Admin** | View all users, all claims, analytics (`password: admin123`) |
+
+---
+
+## ⚠️ Known Limitations
+
+- OTP is stored **in-memory** — resets on server restart. For production, use Redis or store in Firestore
+- Twilio SMS is optional — in dev mode, OTP is returned in the API response as `devOtp`
+- Free Render tier **spins down** after 15 minutes of inactivity — first request may be slow
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repo
+2. Create a new branch `git checkout -b feature/your-feature`
+3. Commit changes `git commit -m 'Add your feature'`
+4. Push `git push origin feature/your-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+MIT License — free to use and modify.
+
+---
+
+## 👨‍💻 Built With ❤️ for Gig Workers of India 🇮🇳
