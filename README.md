@@ -8,7 +8,7 @@ GigShield is an AI-powered parametric insurance platform built for delivery part
 
 | Service | URL |
 |---|---|
-| **Frontend** | [gleaming-mermaid-6c138f.netlify.app](https://gleaming-mermaid-6c138f.netlify.app) |
+| **Frontend** | https://resonant-croquembouche-3447bb.netlify.app/ |
 | **Backend API** | Deployed on Render |
 
 ---
